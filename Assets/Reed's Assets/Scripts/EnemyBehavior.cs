@@ -15,21 +15,31 @@ public class EnemyBehavior : MonoBehaviour
   private Vector3 playerDir;
 
   private Collider player;
+  public PlayerBehavior playerScript;
   private Animator anim;
   private bool isBlocking;
+
+  public CapsuleCollider fist;
 
   void Start()
   {
     anim = GetComponent<Animator>();
+    // fist = transform.GetChild(1).GetChild(2).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<CapsuleCollider>();
   }
 
   private void FixedUpdate()
   {
 
-    if (player)
+    if (player && !isDead)
     {
       playerDir = (transform.position - player.transform.position).normalized;
       transform.rotation = Quaternion.Euler(new Vector3(0, Quaternion.LookRotation(-playerDir).eulerAngles.y, 0));
+    }
+
+    if (anim.GetCurrentAnimatorStateInfo(0).IsName("Punch")) {
+      fist.enabled = true;
+    } else {
+      fist.enabled = false;
     }
 
     if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -37,11 +47,11 @@ public class EnemyBehavior : MonoBehaviour
       isBlocking = false;
       if (sensor.isAttackable)
       {
-        if (true && Random.Range(0f, 1f) < attackPercent / 50) // REPLACE TRUE WITH PLAYER IS IDLE BOOL
+        if (playerScript.isIdle && Random.Range(0f, 1f) < attackPercent / 50) // REPLACE TRUE WITH PLAYER IS IDLE BOOL
         {
           anim.SetTrigger("punch");
         }
-        else if (true && Random.Range(0f, 1f) < blockPercent) // REPLACE TRUE WITH PLAYER IS ATTACKING BOOL
+        else if (playerScript.isAttacking && Random.Range(0f, 1f) < blockPercent) // REPLACE TRUE WITH PLAYER IS ATTACKING BOOL
         {
           isBlocking = true;
           anim.SetTrigger("block");
@@ -56,13 +66,14 @@ public class EnemyBehavior : MonoBehaviour
     {
       anim.SetBool("isWalking", true);
       player = sensor.detectedObject;
+      // playerScript = player.gameObject.GetComponent<PlayerBehavior>();
     }
     else
     {
       anim.SetBool("isWalking", false);
     }
 
-    if (hitBehavior.isHit && !isBlocking && true) // REPLACE TRUE WITH PLAYER IS ATTACKING
+    if (hitBehavior.isHit && !isBlocking && playerScript.isAttacking) // REPLACE TRUE WITH PLAYER IS ATTACKING
     {
       hitBehavior.isHit = false;
       if (anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))

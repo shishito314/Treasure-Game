@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lava
+  - Enemy
+  - EnemyFist
+  - Chest
+  - Treasure
+  - PlayerFist
   layers:
   - Default
   - TransparentFX
@@ -13,8 +18,8 @@ TagManager:
   - Water
   - UI
   - Lava
-  - 
-  - 
+  - Ground
+  - Player
   - 
   - 
   - 

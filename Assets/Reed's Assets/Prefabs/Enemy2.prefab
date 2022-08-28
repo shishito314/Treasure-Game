@@ -968,6 +968,8 @@ MonoBehaviour:
   isDead: 0
   sensor: {fileID: 6737082852414231851}
   hitBehavior: {fileID: 6737082852017524605}
+  playerScript: {fileID: 0}
+  fist: {fileID: 6737082852017524579}
 --- !u!1 &5943605492483723631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,12 +1111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f508f4a61afd94664b6da07155c954d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sight: 6
+  sight: 10
   attackRange: 1
   angle: 45
   objectsLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   obstaclesLayers:
     serializedVersion: 2
     m_Bits: 128

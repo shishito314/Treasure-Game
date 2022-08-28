@@ -1437,7 +1437,7 @@ Transform:
   m_GameObject: {fileID: 6025804221173300620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4707091052901255633}
@@ -1478,13 +1478,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d898f872957433eaaafe92dd353bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPercent: 0.2
+  attackPercent: 0.5
   blockPercent: 0.5
   playerHitDamage: 15
   health: 100
   isDead: 0
   sensor: {fileID: 6872102510902434136}
   hitBehavior: {fileID: 6872102510558756138}
+  playerScript: {fileID: 0}
+  fist: {fileID: 6872102511225551991}
 --- !u!1 &6548692841497094397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,12 +1595,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f508f4a61afd94664b6da07155c954d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sight: 6
+  sight: 10
   attackRange: 1
   angle: 45
   objectsLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   obstaclesLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -2319,6 +2321,7 @@ GameObject:
   - component: {fileID: 5110231085920534293}
   - component: {fileID: 6872102511225551988}
   - component: {fileID: 6872102511225551991}
+  - component: {fileID: 7416569001106039488}
   m_Layer: 0
   m_Name: mixamorig:RightHand
   m_TagString: EnemyFist
@@ -2370,12 +2373,25 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8858929645487025628}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.15
   m_Height: 0.35
   m_Direction: 1
   m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &7416569001106039488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858929645487025628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513783279d683a9468b096ba2994367f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
 --- !u!1 &8882369221540877828
 GameObject:
   m_ObjectHideFlags: 0
